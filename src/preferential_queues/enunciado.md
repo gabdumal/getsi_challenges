@@ -1,4 +1,4 @@
-# Filas preferenciais
+# Filas Preferenciais
 
 A loja de artigos de costura _Pequeno Alfinete_ oferece produtos de qualidade a baixos preços.
 Por esse motivo, ela é bastante frequentada por diferentes clientes.
