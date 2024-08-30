@@ -1,4 +1,4 @@
-# Pressa com meu pavê
+# Pressa com minha Sobremesa
 
 Alice marcou de se encontrar com seus amigos no clube para um piquenique.
 Cada um deles combinou de levar um lanche ou sobremesa para compartilhar.
