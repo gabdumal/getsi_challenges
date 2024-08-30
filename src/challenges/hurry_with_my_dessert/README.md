@@ -34,9 +34,7 @@ O primeiro par de inteiros de cada linha representa o ponto inicial da linha, e 
 
 ## Saída
 
-Seu programa deve imprimir uma **única** linha, contendo o **número** da linha de ônibus que levará Alice ao clube no menor tempo possível, seguido do **tempo** total de viagem, em minutos.
-
-Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apareceu primeiro na entrada.
+Seu programa deve imprimir uma **única** linha, contendo os **tempos** totais de viagem das linhas na ordem em que aparecem, em minutos.
 
 ## Exemplos
 
@@ -57,7 +55,7 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
         </tr>
         <tr>
             <td>3</td>
-            <td>2 12</td>
+            <td>28 12 13</td>
         </tr>
         <tr>
             <td>
@@ -79,7 +77,7 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
         </tr>
         <tr>
             <td>5</td>
-            <td></td>
+            <td>24 44 19 5 35</td>
         </tr>
         <tr>
             <td>
@@ -88,7 +86,7 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
         </tr>
         <tr>
             <td>
-                2 (4 8) (6 7) (11 4) (13 6) (20 5) (25 9)
+                2 (4 8) (6 7) (29 6) (7 5) (11 4) (13 6) (20 5) (25 9)
             </td>
         </tr>
         <tr>

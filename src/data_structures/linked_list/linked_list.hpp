@@ -17,8 +17,6 @@ private:
     Node<T> *head;
     int length;
 
-    Node<T> *getNode(int index);
-
 public:
     LinkedList();
     ~LinkedList();
@@ -26,6 +24,7 @@ public:
     void insert(int index, T data);
     void insertAtBeginning(T data);
     void insertAtEnd(T data);
+    Node<T> *getNode(int index);
     T getData(int index);
     void remove(int index);
     void removeFirst();

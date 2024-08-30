@@ -9,12 +9,6 @@ using namespace std;
 class HurryWithMyDessert
 {
 private:
-    struct BusStop
-    {
-        int identifier;
-        int time_to_next;
-    };
-
     struct BusLine
     {
         int line_number;
