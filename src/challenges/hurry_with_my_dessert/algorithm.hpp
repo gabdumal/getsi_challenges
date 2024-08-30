@@ -18,36 +18,11 @@ private:
     struct BusLine
     {
         int line_number;
-        vector<BusStop> bus_stops;
+        string bus_stops;
     };
 
     static string name;
     static vector<Tester::Test> tests;
-
-    static vector<BusStop> parseBusStops(string input)
-    {
-        int identifier, time_to_next, quantity;
-        try
-        {
-            vector<BusStop> bus_stops;
-            while (input.find("(") != string::npos)
-            {
-                size_t start = input.find("(") + 1;
-                size_t end = input.find(")");
-                string bus_stop = input.substr(start, end - start);
-                input = input.substr(end + 1);
-                identifier = stoi(bus_stop.substr(0, bus_stop.find(" ")));
-                time_to_next = stoi(bus_stop.substr(bus_stop.find(" ") + 1));
-                bus_stops.push_back({identifier, time_to_next});
-            }
-            return bus_stops;
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << e.what() << '\n';
-        }
-        return {};
-    }
 
     static vector<BusLine> parseInputToBusLines(string input)
     {
@@ -65,8 +40,7 @@ private:
                 string bus_line = input.substr(start, end - start);
                 string line_number = bus_line.substr(0, bus_line.find(" "));
                 bus_line = bus_line.substr(line_number.length() + 1, bus_line.length());
-                vector<BusStop> bus_stops(parseBusStops(bus_line));
-                bus_lines.push_back({stoi(line_number), bus_stops});
+                bus_lines[i] = {stoi(line_number), bus_line};
                 start = end + 1;
                 end = input.find("\n", start);
             }

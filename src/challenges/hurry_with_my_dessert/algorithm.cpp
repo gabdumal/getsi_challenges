@@ -13,9 +13,14 @@ vector<Tester::Test> HurryWithMyDessert::tests = {
 /* Implementation */
 string HurryWithMyDessert::main(string input)
 {
-    /* ATENÇÃO: As linhas de ônibus e os paradas de cada foram fornecidas utilizando a estrutura de dados vector.
-    Entretanto, essa NÃO é a estrutura ideal para o problema.
-    Descubra qual é a ED que facilita a implementação do código*/
+    /* ATENÇÃO: Para facilitar sua implementação, as linhas de ônibus foram fornecidas utilizando a estrutura de dados vector.
+    Cada linha é representada pela struct BusLine, definida no arquivo Header deste desafio.
+    Você deve, para cada linha, ler a string que lista os pontos de ônibus, salvá-los em alguma estrutura de dados adequada para o problema, e então utilizá-la como apoio para calcular o tempo total de viagem de cada linha.
+    Lembre-se de que o ônibus pode chegar até o final da linha, e, dessa forma, continuar o trajeto para o primeiro ponto listado.
+    A resposta deve ser retornada como uma string, indicando o número da linha com o menor tempo total de viagem e este tempo total percorrido nela.
+    */
+
     vector<BusLine> bus_lines = parseInputToBusLines(input);
-    return "";
+
+    return "Linha Tempo";
 }
