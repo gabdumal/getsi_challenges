@@ -1,4 +1,5 @@
 #include "algorithm.hpp"
+#include "../../data_structures/linked_list/linked_list.hpp"
 #include <iostream>
 
 using namespace std;
@@ -21,6 +22,8 @@ string HurryWithMyDessert::main(string input)
     */
 
     vector<BusLine> bus_lines = parseInputToBusLines(input);
+
+    LinkedList<int> linked_list;
 
     return "Linha Tempo";
 }
