@@ -24,3 +24,13 @@ tr td:nth-child(2) {
 td.last-entry {
   border-bottom: 1px solid black;
 }
+
+tr.entry-opening {
+  background-color: #e0e0e0;
+}
+
+.entry-opening > td {
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid black;
+}

@@ -42,6 +42,8 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
 
 //TODO: Adicionar exemplos
 
+<link rel="stylesheet" type="text/css" href="../style.css">
+
 <table>
     <thead>
         <tr>
@@ -50,6 +52,9 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
         </tr>
     </thead>
     <tbody>
+        <tr class="entry-opening">
+            <td colspan="2">Exemplo 1</td>
+        </tr>
         <tr>
             <td>3</td>
             <td>2 12</td>
@@ -68,6 +73,9 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
             <td class="last-entry">
                 3 (7 4) (8 4) (9 5) (29 6) (14 7)
             </td>
+        </tr>
+                <tr class="entry-opening">
+            <td colspan="2">Exemplo 2</td>
         </tr>
         <tr>
             <td>5</td>
@@ -106,5 +114,3 @@ Caso haja mais de uma linha com o mesmo tempo mínimo, imprima a linha que apare
 No **primeiro exemplo**, a linha 2 é a que levará Alice ao clube no menor tempo possível, com um tempo total de 12 minutos.
 
 No **segundo exemplo**, a linha
-
-<link defer rel="stylesheet" type="text/css" href="../style.css">
