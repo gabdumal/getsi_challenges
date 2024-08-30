@@ -13,5 +13,9 @@ vector<Tester::Test> HurryWithMyDessert::tests = {
 /* Implementation */
 string HurryWithMyDessert::main(string input)
 {
-    return tests[0].output;
+    /* ATENÇÃO: As linhas de ônibus e os paradas de cada foram fornecidas utilizando a estrutura de dados vector.
+    Entretanto, essa NÃO é a estrutura ideal para o problema.
+    Descubra qual é a ED que facilita a implementação do código*/
+    vector<BusLine> bus_lines = parseInputToBusLines(input);
+    return "";
 }
