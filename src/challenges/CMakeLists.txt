@@ -1,0 +1,4 @@
+# Directories
+add_subdirectory(hurry_with_my_dessert)
+add_subdirectory(preferential_queues)
+add_subdirectory(cinephiles_on_vacations)

@@ -1,6 +1,6 @@
-#include "hurry_with_my_dessert/algorithm.hpp"
-#include <console_colors.hpp>
+#include "challenges/hurry_with_my_dessert/algorithm.hpp"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -13,17 +13,13 @@ constexpr Challenge current_challenge = Challenge::HURRY_WITH_MY_DESSERT;
 
 int main()
 {
-    ConsoleColors::setColor(cout, ConsoleColors::Color::RED, ConsoleColors::Color::WHITE);
-    ConsoleColors::setDecoration(cout, ConsoleColors::Decoration::BOLD);
     cout << "=-=-= GetSi Challenges =-=-=" << endl;
-    ConsoleColors::resetColor(cout);
-    ConsoleColors::resetDecoration(cout);
 
     string challenge_output = "";
     switch (current_challenge)
     {
     case Challenge::HURRY_WITH_MY_DESSERT:
-        challenge_output += HurryWithMyDessert::run();
+        challenge_output += HurryWithMyDessert::run(vector<int>({1, 2}));
         break;
     default:
         cout << "Invalid challenge!" << endl;

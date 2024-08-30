@@ -19,4 +19,5 @@ target_include_directories(hurry_with_my_dessert
 # Linking libraries
 target_link_libraries(hurry_with_my_dessert
     PRIVATE
+        tester
 )
