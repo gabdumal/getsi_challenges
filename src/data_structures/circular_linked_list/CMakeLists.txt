@@ -2,8 +2,6 @@
 target_sources(data_structures
     PUBLIC
         circular_linked_list.hpp
-    PRIVATE
-        circular_linked_list.cpp
 )
 
 # Include self

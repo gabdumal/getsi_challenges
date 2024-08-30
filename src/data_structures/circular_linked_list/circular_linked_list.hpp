@@ -1,5 +1,5 @@
-#ifndef LINKED_LIST_HPP_
-#define LINKED_LIST_HPP_
+#ifndef CIRCULAR_LINKED_LIST_HPP_
+#define CIRCULAR_LINKED_LIST_HPP_
 
 using namespace std;
 
@@ -11,7 +11,7 @@ struct Node
 };
 
 template <typename T>
-class LinkedList
+class CircularLinkedList
 {
 private:
     Node<T> *head;
@@ -20,8 +20,8 @@ private:
     Node<T> *getNode(int index);
 
 public:
-    LinkedList();
-    ~LinkedList();
+    CircularLinkedList();
+    ~CircularLinkedList();
 
     void insert(int index, T data);
     void insertAtBeginning(T data);
@@ -34,26 +34,33 @@ public:
 };
 
 template <typename T>
-LinkedList<T>::LinkedList()
+CircularLinkedList<T>::CircularLinkedList()
 {
     this->head = nullptr;
     this->length = 0;
 }
 
 template <typename T>
-LinkedList<T>::~LinkedList()
+CircularLinkedList<T>::~CircularLinkedList()
 {
-    auto current = this->head;
-    while (current != nullptr)
+    if (this->head != nullptr)
     {
+        auto current = this->head;
         auto next = current->next;
+        while (next != this->head)
+        {
+            delete current;
+            current = next;
+            next = current->next;
+        }
         delete current;
-        current = next;
+        this->head = nullptr;
+        this->length = 0;
     }
 }
 
 template <typename T>
-Node<T> *LinkedList<T>::getNode(int index)
+Node<T> *CircularLinkedList<T>::getNode(int index)
 {
     auto current = this->head;
     for (int i = 0; i < index && current != nullptr; ++i)
@@ -66,14 +73,24 @@ Node<T> *LinkedList<T>::getNode(int index)
 }
 
 template <typename T>
-void LinkedList<T>::insert(int index, T data)
+void CircularLinkedList<T>::insert(int index, T data)
 {
     auto newNode = new Node<T>(data);
 
     // Insert at the beginning
     if (index == 0)
     {
+        if (this->head == nullptr)
+        {
+            this->head = newNode;
+            this->head->next = this->head;
+            this->length++;
+            return;
+        }
+
+        auto last = this->getNode(this->length - 1);
         newNode->next = this->head;
+        last->next = newNode;
         this->head = newNode;
         this->length++;
         return;
@@ -87,26 +104,26 @@ void LinkedList<T>::insert(int index, T data)
 };
 
 template <typename T>
-void LinkedList<T>::insertAtBeginning(T data)
+void CircularLinkedList<T>::insertAtBeginning(T data)
 {
     this->insert(0, data);
 }
 
 template <typename T>
-void LinkedList<T>::insertAtEnd(T data)
+void CircularLinkedList<T>::insertAtEnd(T data)
 {
     this->insert(this->length, data);
 }
 
 template <typename T>
-T LinkedList<T>::getData(int index)
+T CircularLinkedList<T>::getData(int index)
 {
     auto current = this->getNode(index);
     return current->data;
 }
 
 template <typename T>
-void LinkedList<T>::remove(int index)
+void CircularLinkedList<T>::remove(int index)
 {
     // Remove at the beginning
     if (index == 0)
@@ -114,33 +131,47 @@ void LinkedList<T>::remove(int index)
         if (this->head == nullptr)
             throw out_of_range("Index out of range");
 
-        this->head = this->head->next;
+        if (this->length == 1)
+        {
+            delete this->head;
+            this->head = nullptr;
+        }
+        else
+        {
+            auto last = this->getNode(this->length - 1);
+            auto to_be_removed = this->head;
+            this->head = this->head->next;
+            last->next = this->head;
+            delete to_be_removed;
+        }
         this->length--;
         return;
     }
 
     // Remove at any other position
     auto before_to_be_removed = this->getNode(index - 1);
-    before_to_be_removed->next = before_to_be_removed->next->next;
+    auto to_be_removed = before_to_be_removed->next;
+    before_to_be_removed->next = to_be_removed->next;
+    delete to_be_removed;
     this->length--;
 }
 
 template <typename T>
-void LinkedList<T>::removeFirst()
+void CircularLinkedList<T>::removeFirst()
 {
     this->remove(0);
 }
 
 template <typename T>
-void LinkedList<T>::removeLast()
+void CircularLinkedList<T>::removeLast()
 {
     this->remove(this->length - 1);
 }
 
 template <typename T>
-int LinkedList<T>::getLength()
+int CircularLinkedList<T>::getLength()
 {
     return this->length;
 }
 
-#endif // LINKED_LIST_HPP_
+#endif // CIRCULAR_LINKED_LIST_HPP_

@@ -15,3 +15,6 @@ target_link_libraries(tester
 # Directories
 add_subdirectory(linked_list)
 add_subdirectory(circular_linked_list)
+
+# Properties
+set_target_properties(data_structures PROPERTIES LINKER_LANGUAGE CXX)

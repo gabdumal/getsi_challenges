@@ -2,8 +2,6 @@
 target_sources(data_structures
     PUBLIC
         linked_list.hpp
-    PRIVATE
-        node.hpp
 )
 
 # Include self
