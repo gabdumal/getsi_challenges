@@ -40,9 +40,57 @@ third = input; // Pega o restante da string
 
 ```
 
+Alguns exemplos de manipulações da estrutura de dados `vector`:
+
+```c++
+#include <iostream>
+#include <vector>
+
+...
+
+/* Lendo uma linha de inteiros */
+std::string input = "1 2 3 4 5";
+std::vector<int> numbers;
+size_t separator_index = 0;
+while (separator_index != std::string::npos) {
+    size_t next_separator_index = input.find(' ', separator_index);
+    std::string number_str = input.substr(separator_index, next_separator_index - separator_index);
+    numbers.push_back(std::stoi(number_str));
+    separator_index = next_separator_index + 1;
+}
+
+/* Lendo uma linha de strings */
+std::string input = "abc def ghi jkl mno";
+std::vector<std::string> words;
+size_t separator_index = 0;
+while (separator_index != std::string::npos) {
+    size_t next_separator_index = input.find(' ', separator_index);
+    std::string word = input.substr(separator_index, next_separator_index - separator_index);
+    words.push_back(word);
+    separator_index = next_separator_index + 1;
+}
+
+/* Percorrendo um vetor de inteiros */
+std::vector<int> numbers = {1, 2, 3, 4, 5};
+for (int number : numbers) {
+    std::cout << number << std::endl;
+}
+
+/* Percorrendo um vetor de strings */
+std::vector<std::string> words = {"abc", "def", "ghi", "jkl", "mno"};
+for (std::string word : words) {
+    std::cout << word << std::endl;
+}
+
+```
+
 ## Referências úteis
 
 [GeeksForGeeks: Standard Template Library form C++](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
 [GeeksForGeeks: Vector in C++ STL](https://www.geeksforgeeks.org/vector-in-cpp-stl/)
 [GeeksForGeeks: Strings in C++](https://www.geeksforgeeks.org/strings-in-cpp/)
 [GeeksForGeeks: Smart Pointers in C++](https://www.geeksforgeeks.org/smart-pointers-cpp/)
+
+```
+
+```
