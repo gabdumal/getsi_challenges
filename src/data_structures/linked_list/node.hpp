@@ -9,7 +9,7 @@ class Node
 {
 private:
     T data;
-    shared_ptr<Node<T>> next;
+    Node<T> *next;
 
 public:
     Node(T data);

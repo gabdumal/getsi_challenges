@@ -91,6 +91,8 @@ for (int number : numbers) {
 }
 ```
 
+Sinta-se livre para criar qualquer função ou `struct` que você achar necessário no arquivo `algorithm.cpp` referente ao desafio que você está resolvendo.
+
 ## Referências úteis
 
 [GeeksForGeeks: Standard Template Library form C++](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
