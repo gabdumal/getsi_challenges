@@ -31,9 +31,25 @@ string CinephilesOnVacations::main(string input)
 
     for (Score score : scores)
     {
-        /* Your code here */
+        if (movies.contains(score.movie_name))
+        {
+            Movie movie = movies.at(score.movie_name);
+            movie.quantity++;
+            movie.plot_sum += score.plot;
+            movie.acting_sum += score.acting;
+            movie.direction_sum += score.direction;
+            movie.soundtrack_sum += score.soundtrack;
+            movie.special_effects_sum += score.special_effects;
+            movies.update(score.movie_name, movie);
+        }
+        else
+        {
+            Movie movie = {1, score.plot, score.acting, score.direction, score.soundtrack, score.special_effects};
+            movies.insert(score.movie_name, movie);
+        }
     }
 
     output += printMovies(movies);
+
     return output;
 }
