@@ -13,7 +13,7 @@ enum Challenge
     CINEPHILES_ON_VACATIONS
 };
 
-constexpr Challenge current_challenge = Challenge::PREFERENTIAL_QUEUES;
+constexpr Challenge current_challenge = Challenge::CINEPHILES_ON_VACATIONS;
 
 int main()
 {

@@ -19,7 +19,11 @@ Este projeto está configurado com o CMake.
 Para compilar, você deve definir o diretório, executando o seguinte comando na pasta raiz do projeto:
 
 ```bash
+# Sistemas UNIX
 cmake -S . -B build
+
+# Windows com MinGW
+cmake -S . -B build -G "MinGW Makefiles"
 ```
 
 Em seguida, você pode compilar o projeto utilizando o comando:
@@ -28,11 +32,16 @@ Em seguida, você pode compilar o projeto utilizando o comando:
 cmake --build build
 ```
 
+Ou então utilizar a extensão CMakeTools do Visual Studio Code.
+Lembre-se de rodar o primeiro comando antes de utilizar a extensão.
+
 Para executar o código, voê deve rodar o arquivo executável gerado na pasta `build`. Para sistemas UNIX, você pode executar o seguinte comando:
 
 ```bash
 ./build/src/getsi_challenges
 ```
+
+Caso haja algum problema, tente deletar a pasta `build` e realizar o processo novamente.
 
 ## Manipulando as entradas
 

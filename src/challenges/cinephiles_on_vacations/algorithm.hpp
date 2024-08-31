@@ -95,8 +95,10 @@ public:
     static string printMovies(UnorderedMap<string, Movie> movies)
     {
         string output = "";
-        for (auto [movie_name, movie] : movies)
+        for (auto movie_pair : movies)
         {
+            string movie_name = movie_pair.first;
+            Movie movie = movie_pair.second;
             float plot_avg = (float)movie.plot_sum / movie.quantity;
             float acting_avg = (float)movie.acting_sum / movie.quantity;
             float direction_avg = (float)movie.direction_sum / movie.quantity;
