@@ -1,18 +1,23 @@
 #ifndef LINKED_LIST_HPP_
 #define LINKED_LIST_HPP_
 
-using namespace std;
+#include <stdexcept>
 
-template <typename T>
-struct Node
-{
-    T data;
-    Node *next;
-};
+using namespace std;
 
 template <typename T>
 class LinkedList
 {
+public:
+    template <typename U>
+    struct Node
+    {
+        U data;
+        Node *next;
+
+        Node(U data) : data(data), next(nullptr) {}
+    };
+
 private:
     Node<T> *head;
     int length;
@@ -21,15 +26,17 @@ public:
     LinkedList();
     ~LinkedList();
 
+    int getLength();
+    Node<T> *getNode(int index);
+    T getData(int index);
+
     void insert(int index, T data);
     void insertAtBeginning(T data);
     void insertAtEnd(T data);
-    Node<T> *getNode(int index);
-    T getData(int index);
+
     void remove(int index);
     void removeFirst();
     void removeLast();
-    int getLength();
 };
 
 template <typename T>
@@ -52,7 +59,7 @@ LinkedList<T>::~LinkedList()
 }
 
 template <typename T>
-Node<T> *LinkedList<T>::getNode(int index)
+typename LinkedList<T>::template Node<T> *LinkedList<T>::getNode(int index)
 {
     auto current = this->head;
     for (int i = 0; i < index && current != nullptr; ++i)

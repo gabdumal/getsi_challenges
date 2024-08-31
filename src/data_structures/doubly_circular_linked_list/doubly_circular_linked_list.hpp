@@ -1,19 +1,23 @@
 #ifndef DOUBLY_CIRCULAR_LINKED_LIST_HPP_
 #define DOUBLY_CIRCULAR_LINKED_LIST_HPP_
 
+#include <stdexcept>
 using namespace std;
-
-template <typename T>
-struct Node
-{
-    T data;
-    Node *previous;
-    Node *next;
-};
 
 template <typename T>
 class DoublyCircularLinkedList
 {
+public:
+    template <typename U>
+    struct Node
+    {
+        U data;
+        Node *next;
+        Node *previous;
+
+        Node(U data) : data(data), next(nullptr), previous(nullptr) {}
+    };
+
 private:
     Node<T> *head;
     int length;
@@ -22,15 +26,17 @@ public:
     DoublyCircularLinkedList();
     ~DoublyCircularLinkedList();
 
+    int getLength();
+    Node<T> *getNode(int index);
+    T getData(int index);
+
     void insert(int index, T data);
     void insertAtBeginning(T data);
     void insertAtEnd(T data);
-    Node<T> *getNode(int index);
-    T getData(int index);
+
     void remove(int index);
     void removeFirst();
     void removeLast();
-    int getLength();
 };
 
 template <typename T>
@@ -60,7 +66,7 @@ DoublyCircularLinkedList<T>::~DoublyCircularLinkedList()
 }
 
 template <typename T>
-Node<T> *DoublyCircularLinkedList<T>::getNode(int index)
+typename DoublyCircularLinkedList<T>::template Node<T> *DoublyCircularLinkedList<T>::getNode(int index)
 {
     auto current = this->head;
     for (int i = 0; i < index && current != nullptr; ++i)

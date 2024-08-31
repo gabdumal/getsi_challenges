@@ -1,5 +1,4 @@
 #include "algorithm.hpp"
-#include "../../data_structures/doubly_circular_linked_list/doubly_circular_linked_list.hpp"
 #include <iostream>
 #include <string>
 
@@ -73,8 +72,8 @@ string HurryWithMyDessert::main(string input)
         int important_stop_index = -1;
         bool travel_in_reverse_order = false;
 
-        Node<BusStop> *head = doubly_circular_linked_list.getNode(0);
-        Node<BusStop> *current = head;
+        DoublyCircularLinkedList<BusStop>::Node<BusStop> *head = doubly_circular_linked_list.getNode(0);
+        DoublyCircularLinkedList<BusStop>::Node<BusStop> *current = head;
         do
         {
             BusStop bus_stop = current->data;

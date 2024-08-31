@@ -1,6 +1,9 @@
 #ifndef HURRY_WITH_MY_DESSERT_HPP_
 #define HURRY_WITH_MY_DESSERT_HPP_
 
+#include "../../data_structures/linked_list/linked_list.hpp"
+#include "../../data_structures/circular_linked_list/circular_linked_list.hpp"
+#include "../../data_structures/doubly_circular_linked_list/doubly_circular_linked_list.hpp"
 #include <tester.hpp>
 #include <vector>
 
