@@ -27,7 +27,7 @@ public:
 
     bool contains(K key)
     {
-        return map.contains(key);
+        return map.find(key) != map.end();
     }
 
     V at(K key)
@@ -45,12 +45,12 @@ public:
         return map.size();
     }
 
-    auto begin()
+    typename unordered_map<K, V>::iterator begin()
     {
         return map.begin();
     }
 
-    auto end()
+    typename unordered_map<K, V>::iterator end()
     {
         return map.end();
     }

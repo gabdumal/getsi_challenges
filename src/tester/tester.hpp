@@ -15,6 +15,8 @@ public:
         int identifier;
         string input;
         string output;
+
+        Test(int identifier, string input, string output) : identifier(identifier), input(input), output(output) {}
     };
 
     static vector<Test> pickTests(vector<Test> tests, vector<int> input_identifiers);
