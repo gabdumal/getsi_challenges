@@ -39,3 +39,52 @@ A saída é composta por 1 linha, contendo $N$ inteiros separados por espaços, 
 
 ## Exemplos
 
+<link rel="stylesheet" type="text/css" href="../../style.css">
+
+<table>
+    <thead>
+        <tr>
+            <th>Entrada</th>
+            <th>Saída</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="entry-opening">
+            <td colspan="2">Exemplo 1</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>89 49 67 16 80 29</td>
+        </tr>
+        <tr>
+            <td>
+                49 0 5
+            </td>
+        </tr>
+        <tr>
+            <td>
+                89 0 10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                67 15 6
+            </td>
+        </tr>
+        <tr>
+            <td>
+                16 21 3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                29 22 4
+            </td>
+        </tr>
+        <tr>
+            <td class="last-entry">
+                80 22 8
+            </td>
+        </tr>
+    </tbody>
+</table>
