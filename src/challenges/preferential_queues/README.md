@@ -36,3 +36,6 @@ As linhas estão ordenadas de acordo com o momento de chegada dos clientes, ou s
 ## Saída
 
 A saída é composta por 1 linha, contendo $N$ inteiros separados por espaços, representando a idade dos clientes na ordem em que foram atendidos.
+
+## Exemplos
+

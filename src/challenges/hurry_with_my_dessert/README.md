@@ -38,9 +38,7 @@ Seu programa deve imprimir uma **única** linha, contendo os **tempos** totais d
 
 ## Exemplos
 
-//TODO: Adicionar exemplos
-
-<link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="stylesheet" type="text/css" href="../../style.css">
 
 <table>
     <thead>

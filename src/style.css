@@ -17,10 +17,6 @@ td:first-child {
   border-right: 1px solid black;
 }
 
-tr td:nth-child(2) {
-  border-top: 1px solid black;
-}
-
 td.last-entry {
   border-bottom: 1px solid black;
 }

@@ -16,6 +16,7 @@ target_link_libraries(getsi_challenges
         data_structures
         hurry_with_my_dessert
         preferential_queues
+        cinephiles_on_vacations
 )
 
 # Directories

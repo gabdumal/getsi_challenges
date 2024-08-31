@@ -16,41 +16,90 @@ Por isso, eles pediram a sua ajuda para automatizar esse processo.
 
 ## Entrada
 
-A entrada é composta por $N$ $(1 \leq N \leq 10^3)$ linhas.
+A entrada é composta por duas partes.
 
-Cada uma delas contém uma string $S$, que representa o **nome do filme**, e $5$ inteiros, $E$, $A$, $D$, $T$ e $S$ $(1 \leq E, A, D, T, S \leq 5)$, representando as notas de **enredo**, **atuação**, **direção**, **trilha sonora** e **efeitos especiais**, respectivamente.
+A primeira parte contém um inteiro $N$ $(1 \leq N \leq 10^3)$, representando a quantidade de **notas depositadas** na urna.
+
+A segunda parte contém $N$ linhas, cada uma das notas.
+Cada linha se forma por uma string $S$, que representa o **nome do filme**, e $5$ inteiros, $E$, $A$, $D$, $T$ e $S$ $(1 \leq E, A, D, T, S \leq 5)$, representando as notas de **enredo**, **atuação**, **direção**, **trilha sonora** e **efeitos especiais**, respectivamente.
 
 ## Saída
 
 A saída é composta por $M$ linhas.
 
-Cada linha contém o nome de um filme e a média das notas de *enredo*, *atuação*, *direção*, *trilha sonora* e *efeitos especiais*, com ***uma casa decimal***.
-As médias devem ser **arredondadas para cima**.
+Cada linha contém o nome de um filme e a média das notas de _enredo_, _atuação_, _direção_, _trilha sonora_ e _efeitos especiais_, com **_uma casa decimal_**.
+As médias devem ter **duas** casas decimais.
 
-## Exemplo
+## Exemplos
 
-### Entrada
+<link rel="stylesheet" type="text/css" href="../../style.css">
 
-```
-O_Poderoso_Chefao 5 5 5 5 5
-Titanic 5 4 5 4 5
-O_Rei_Leao 5 5 5 5 5
-O_Poderoso_Chefao 5 3 5 4 5
-O_Poderoso_Chefao 5 5 5 5 5
-Titanic 5 5 5 5 5
-E_o_Vento_Levou 5 3 5 5 5
-```
+<table>
+    <thead>
+        <tr>
+            <th>Entrada</th>
+            <th>Saída</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="entry-opening">
+            <td colspan="2">Exemplo 1</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>
+                E_o_Vento_Levou 5.00 3.00 5.00 5.00 5.00
+            </td>
+        </tr>
+        <tr>
+            <td>
+                O_Poderoso_Chefao 5 5 5 5 5
+            </td>
+            <td>
+                O_Rei_Leao 5.00 5.00 5.00 5.00 5.00
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Titanic 5 4 5 4 5
+            </td>
+            <td>
+                Titanic 5.00 4.50 5.00 4.50 5.00
+            </td>
+        </tr>
+        <tr>
+            <td>
+               O_Rei_Leao 5 5 5 5 5
+            </td>
+            <td>
+               O_Poderoso_Chefao 5.00 4.33 5.00 4.66 5.00
+            </td>
+        </tr>
+        <tr>
+            <td>
+                O_Poderoso_Chefao 5 3 5 4 5
+            </td>
+        </tr>
+        <tr>
+            <td>
+                O_Poderoso_Chefao 5 5 5 5 5
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Titanic 5 5 5 5 5
+            </td>
+        </tr>
+        <tr class="last-entry">
+            <td>
+                E_o_Vento_Levou 5 3 5 5 5
+            </td>
+        </tr>
+    </tbody>
 
-### Saída
-
-```
-O_Poderoso_Chefao 5.0 4.3 5.0 4.7 5.0
-Titanic 5.0 4.7 5.0 4.7 5.0
-O_Rei_Leao 5.0 5.0 5.0 5.0 5.0
-E_o_Vento_Levou 5.0 3.0 5.0 5.0 5.0
-```
+</table>
 
 ### Observações
 
-No exemplo, o filme *O Poderoso Chefão* foi assistido 3 vezes, recebendo notas diferentes.
-A média das notas de *enredo* foi $5.0$, a de *atuação* foi $4.3$, a de *direção* foi $5.0$, a de *trilha sonora* foi $4.7$ e a de *efeitos especiais* foi $5.0$.
+No exemplo, o filme _O Poderoso Chefão_ foi assistido 3 vezes, recebendo notas diferentes.
+A média das notas de _enredo_ foi $5.0$, a de _atuação_ foi $4.33$, a de _direção_ foi $5.0$, a de _trilha sonora_ foi $4.66$ e a de _efeitos especiais_ foi $5.0$.

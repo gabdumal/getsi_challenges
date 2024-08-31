@@ -9,81 +9,51 @@ template <typename K, typename V>
 class UnorderedMap
 {
 private:
-    UnorderedMap<K, V> *unordered_map;
-    int length;
-
-    void clear();
-    V get(K key, bool erase);
+    unordered_map<K, V> map;
 
 public:
-    UnorderedMap();
-    ~UnorderedMap();
+    UnorderedMap() : map() {}
+    ~UnorderedMap() {}
 
-    int getLength();
-    void insert(K key, V value);
-    V get(K key);
-    V remove(K key);
-};
-
-template <typename K, typename V>
-UnorderedMap<K, V>::UnorderedMap()
-{
-    this->unordered_map = new unordered_map<K, V>;
-    this->length = 0;
-}
-
-template <typename K, typename V>
-UnorderedMap<K, V>::~UnorderedMap()
-{
-    this->clear();
-}
-
-template <typename K, typename V>
-void UnorderedMap<K, V>::clear()
-{
-    this->unordered_map->clear();
-    this->length = 0;
-}
-
-template <typename K, typename V>
-int UnorderedMap<K, V>::getLength()
-{
-    return this->length;
-}
-
-template <typename K, typename V>
-void UnorderedMap<K, V>::insert(K key, V value)
-{
-    this->unordered_map->insert({key, value});
-    this->length++;
-}
-
-template <typename K, typename V>
-V UnorderedMap<K, V>::get(K key, bool erase)
-{
-    auto it = this->unordered_map->find(key);
-    if (it == this->unordered_map->end())
-        throw "Key not found";
-
-    V value = it->second;
-    if (erase)
+    void insert(K key, V value)
     {
-        this->unordered_map->erase(it);
-        this->length--;
+        map.insert({key, value});
     }
-    return value;
-}
 
-template <typename K, typename V>
-V UnorderedMap<K, V>::get(K key)
-{
-    return this->get(key, false);
-}
+    void update(K key, V value)
+    {
+        map[key] = value;
+    }
 
-template <typename K, typename V>
-V UnorderedMap<K, V>::remove(K key)
-{
-    return this->get(key, true);
-}
+    bool contains(K key)
+    {
+        return map.contains(key);
+    }
+
+    V at(K key)
+    {
+        return map.at(key);
+    }
+
+    void erase(K key)
+    {
+        map.erase(key);
+    }
+
+    size_t size()
+    {
+        return map.size();
+    }
+
+    auto begin()
+    {
+        return map.begin();
+    }
+
+    auto end()
+    {
+        return map.end();
+    }
+};
 
 #endif // UNORDERED_MAP_HPP_
