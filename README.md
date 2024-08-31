@@ -102,3 +102,5 @@ Sinta-se livre para criar qualquer função ou `struct` que você achar necessá
 [GeeksForGeeks: Strings in C++](https://www.geeksforgeeks.org/strings-in-cpp/)
 
 [GeeksForGeeks: Smart Pointers in C++](https://www.geeksforgeeks.org/smart-pointers-cpp/)
+
+[GeeksForGeeks: Queue Data Structure](https://www.geeksforgeeks.org/queue-data-structure/)
