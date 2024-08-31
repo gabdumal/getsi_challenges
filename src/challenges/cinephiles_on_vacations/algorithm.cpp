@@ -4,7 +4,7 @@
 using namespace std;
 
 /* Data */
-string CinephilesOnVacations::name = "Preferential Queues";
+string CinephilesOnVacations::name = "Cinephiles on Vacations";
 
 vector<Tester::Test> CinephilesOnVacations::tests = {
     Tester::Test(1, "7\nO_Poderoso_Chefao 5 5 5 5 5\nTitanic 5 4 5 4 5\nO_Rei_Leao 5 5 5 5 5\nO_Poderoso_Chefao 5 3 5 4 5\nO_Poderoso_Chefao 5 5 5 5 5\nTitanic 5 5 5 5 5\nE_o_Vento_Levou 5 3 5 5 5", "E_o_Vento_Levou 5.00 3.00 5.00 5.00 5.00\nO_Rei_Leao 5.00 5.00 5.00 5.00 5.00\nTitanic 5.00 4.50 5.00 4.50 5.00\nO_Poderoso_Chefao 5.00 4.33 5.00 4.66 5.00"),
@@ -13,6 +13,7 @@ vector<Tester::Test> CinephilesOnVacations::tests = {
 };
 
 /* ATENÇÃO: Para facilitar sua implementação, as notas dos filmes depositadas na urna são representadas pela struct Score, definida no arquivo Header deste desafio.
+Elas são armazenadas em uma estrutura de dados padrão chamada vector.
 DICA: não utilize o parâmetro input! Ele apresenta a entrada de forma não trivial de se separar. Utilize a função parseInputToScores para obter as notas.
 
 ATENÇÃO: Disponibilizamos também a estrutura Movie para você armazenar a soma das notas dos filmes, para facilitar o cálculo da média.
@@ -30,25 +31,9 @@ string CinephilesOnVacations::main(string input)
 
     for (Score score : scores)
     {
-        if (movies.contains(score.movie_name))
-        {
-            Movie movie = movies.at(score.movie_name);
-            movie.quantity++;
-            movie.plot_sum += score.plot;
-            movie.acting_sum += score.acting;
-            movie.direction_sum += score.direction;
-            movie.soundtrack_sum += score.soundtrack;
-            movie.special_effects_sum += score.special_effects;
-            movies.update(score.movie_name, movie);
-        }
-        else
-        {
-            Movie movie = {1, score.plot, score.acting, score.direction, score.soundtrack, score.special_effects};
-            movies.insert(score.movie_name, movie);
-        }
+        /* Your code here */
     }
 
     output += printMovies(movies);
-
     return output;
 }

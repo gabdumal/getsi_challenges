@@ -13,6 +13,27 @@ Para selecionar o desafio que você deseja resolver, basta alterar a seguinte li
 constexpr Challenge current_challenge = Challenge::[CHALLENGE];
 ```
 
+## Compilando e executando
+
+Este projeto está configurado com o CMake.
+Para compilar, você deve definir o diretório, executando o seguinte comando na pasta raiz do projeto:
+
+```bash
+cmake -S . -B build
+```
+
+Em seguida, você pode compilar o projeto utilizando o comando:
+
+```bash
+cmake --build build
+```
+
+Para executar o código, voê deve rodar o arquivo executável gerado na pasta `build`. Para sistemas UNIX, você pode executar o seguinte comando:
+
+```bash
+./build/src/getsi_challenges
+```
+
 ## Manipulando as entradas
 
 Todas as entradas são `strings` e podem ser lidas de várias formas.
