@@ -27,7 +27,7 @@ public:
 
     bool contains(K key)
     {
-        return map.contains(key);
+        return map.find(key) != map.end();
     }
 
     V at(K key)
