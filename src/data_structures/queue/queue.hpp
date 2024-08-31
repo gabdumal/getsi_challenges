@@ -18,7 +18,6 @@ private:
     Node<T> *rear;
     int length;
 
-    bool isEmpty();
     void clear();
 
 public:
@@ -26,6 +25,7 @@ public:
     ~Queue();
 
     int getLength();
+    bool isEmpty();
     void enqueue(T data);
     T dequeue();
     T peek();

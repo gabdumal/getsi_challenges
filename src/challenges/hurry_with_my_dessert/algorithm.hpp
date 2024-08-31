@@ -8,13 +8,14 @@ using namespace std;
 
 class HurryWithMyDessert
 {
-private:
+public:
     struct BusLine
     {
         int line_number;
         string bus_stops;
     };
 
+private:
     static string name;
     static vector<Tester::Test> tests;
 
@@ -48,8 +49,7 @@ private:
     }
 
 public:
-    static vector<Tester::Test>
-    getTests()
+    static vector<Tester::Test> getTests()
     {
         return tests;
     }

@@ -19,7 +19,7 @@ Você deve, para cada linha, ler a string que lista os pontos de ônibus, salvá
 Lembre-se de que o ônibus pode chegar até o final da linha, e, dessa forma, continuar o trajeto para o primeiro ponto listado.
 A resposta deve ser retornada como uma string, indicando tempos decorridos nos percursos em cada uma.
 
-DICA: não utilize o parâmetro input! Ele apresenta a entrada de forma não trivial de se separar. Ao ler cada bus_line, obtenha sua lista de pontos por: bus_line.bus_stops
+DICA: não utilize o parâmetro input! Ele apresenta a entrada de forma não trivial de se separar. Utilize a função parseInputToBusLines para obter as linhas de ônibus. Ao ler cada bus_line, obtenha sua lista de pontos por: bus_line.bus_stops
 */
 
 /* Implementation */

@@ -7,6 +7,14 @@ Para facilitar, este projeto contém métodos para executar os testes dos desafi
 Alguns desafios disponibilizam os dados da entrada de forma parcialmente processada, como na estrutura de dados `vector` da STL do C++.
 Em alguns desafios, são fornecidas `structs` para facilitar a organização dos dados.
 
+Para selecionar o desafio que você deseja resolver, basta alterar a seguinte linha do arquivo `src/main.cpp`:
+
+```c++
+constexpr Challenge current_challenge = Challenge::[CHALLENGE];
+```
+
+## Manipulando as entradas
+
 Todas as entradas são `strings` e podem ser lidas de várias formas.
 Alguns métodos que você pode usar para ler as entradas são:
 

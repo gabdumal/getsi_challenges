@@ -15,6 +15,7 @@ target_link_libraries(getsi_challenges
         tester
         data_structures
         hurry_with_my_dessert
+        preferential_queues
 )
 
 # Directories
