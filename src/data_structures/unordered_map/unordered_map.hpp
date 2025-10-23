@@ -1,59 +1,51 @@
-#ifndef UNORDERED_MAP_HPP_
-#define UNORDERED_MAP_HPP_
+#ifndef __UNORDERED_MAP_HPP__
+#define __UNORDERED_MAP_HPP__
 
 #include <unordered_map>
 
 using namespace std;
 
-template <typename K, typename V>
-class UnorderedMap
-{
-private:
-    unordered_map<K, V> map;
+template<typename K, typename V>
+class UnorderedMap {
+    private:
+        unordered_map<K, V> map;
 
-public:
-    UnorderedMap() : map() {}
-    ~UnorderedMap() {}
+    public:
+        UnorderedMap(): map() {}
 
-    void insert(K key, V value)
-    {
-        map.insert({key, value});
-    }
+        ~UnorderedMap() {}
 
-    void update(K key, V value)
-    {
-        map[key] = value;
-    }
+        void insert(K key, V value) {
+            map.insert({key, value});
+        }
 
-    bool contains(K key)
-    {
-        return map.find(key) != map.end();
-    }
+        void update(K key, V value) {
+            map[key] = value;
+        }
 
-    V at(K key)
-    {
-        return map.at(key);
-    }
+        bool contains(K key) {
+            return map.find(key) != map.end();
+        }
 
-    void erase(K key)
-    {
-        map.erase(key);
-    }
+        V at(K key) {
+            return map.at(key);
+        }
 
-    size_t size()
-    {
-        return map.size();
-    }
+        void erase(K key) {
+            map.erase(key);
+        }
 
-    typename unordered_map<K, V>::iterator begin()
-    {
-        return map.begin();
-    }
+        size_t size() {
+            return map.size();
+        }
 
-    typename unordered_map<K, V>::iterator end()
-    {
-        return map.end();
-    }
+        typename unordered_map<K, V>::iterator begin() {
+            return map.begin();
+        }
+
+        typename unordered_map<K, V>::iterator end() {
+            return map.end();
+        }
 };
 
-#endif // UNORDERED_MAP_HPP_
+#endif  // __UNORDERED_MAP_HPP__

@@ -1,60 +1,54 @@
-#ifndef CIRCULAR_LINKED_LIST_HPP_
-#define CIRCULAR_LINKED_LIST_HPP_
+#ifndef __CIRCULAR_LINKED_LIST_HPP__
+#define __CIRCULAR_LINKED_LIST_HPP__
 
 #include <stdexcept>
 
 using namespace std;
 
-template <typename T>
-class CircularLinkedList
-{
-public:
-    template <typename U>
-    struct Node
-    {
-        U data;
-        Node *next;
+template<typename T>
+class CircularLinkedList {
+    public:
+        template<typename U>
+        struct Node {
+                U data;
+                Node *next;
 
-        Node(U data) : data(data), next(nullptr) {}
-    };
+                Node(U data): data(data), next(nullptr) {}
+        };
 
-private:
-    Node<T> *head;
-    int length;
+    private:
+        Node<T> *head;
+        int length;
 
-public:
-    CircularLinkedList();
-    ~CircularLinkedList();
+    public:
+        CircularLinkedList();
+        ~CircularLinkedList();
 
-    int getLength();
-    Node<T> *getNode(int index);
-    T getData(int index);
+        int getLength();
+        Node<T> *getNode(int index);
+        T getData(int index);
 
-    void insert(int index, T data);
-    void insertAtBeginning(T data);
-    void insertAtEnd(T data);
+        void insert(int index, T data);
+        void insertAtBeginning(T data);
+        void insertAtEnd(T data);
 
-    void remove(int index);
-    void removeFirst();
-    void removeLast();
+        void remove(int index);
+        void removeFirst();
+        void removeLast();
 };
 
-template <typename T>
-CircularLinkedList<T>::CircularLinkedList()
-{
+template<typename T>
+CircularLinkedList<T>::CircularLinkedList() {
     this->head = nullptr;
     this->length = 0;
 }
 
-template <typename T>
-CircularLinkedList<T>::~CircularLinkedList()
-{
-    if (this->head != nullptr)
-    {
+template<typename T>
+CircularLinkedList<T>::~CircularLinkedList() {
+    if (this->head != nullptr) {
         auto current = this->head;
         auto next = current->next;
-        while (next != this->head)
-        {
+        while (next != this->head) {
             delete current;
             current = next;
             next = current->next;
@@ -65,85 +59,76 @@ CircularLinkedList<T>::~CircularLinkedList()
     }
 }
 
-template <typename T>
-typename CircularLinkedList<T>::template Node<T> *CircularLinkedList<T>::getNode(int index)
-{
+template<typename T>
+typename CircularLinkedList<T>::template Node<T> *CircularLinkedList<T>::getNode(int index) {
     auto current = this->head;
-    for (int i = 0; i < index && current != nullptr; ++i)
+    for (int i = 0; i < index && current != nullptr; ++i) {
         current = current->next;
+    }
 
-    if (current == nullptr)
+    if (current == nullptr) {
         throw out_of_range("Index out of range");
+    }
 
     return current;
 }
 
-template <typename T>
-void CircularLinkedList<T>::insert(int index, T data)
-{
-    auto newNode = new Node<T>(data);
+template<typename T>
+void CircularLinkedList<T>::insert(int index, T data) {
+    auto new_node = new Node<T>(data);
 
     // Insert at the beginning
-    if (index == 0)
-    {
-        if (this->head == nullptr)
-        {
-            this->head = newNode;
+    if (index == 0) {
+        if (this->head == nullptr) {
+            this->head = new_node;
             this->head->next = this->head;
             this->length++;
             return;
         }
 
         auto last = this->getNode(this->length - 1);
-        newNode->next = this->head;
-        last->next = newNode;
-        this->head = newNode;
+        new_node->next = this->head;
+        last->next = new_node;
+        this->head = new_node;
         this->length++;
         return;
     }
 
     // Insert at any other position
     auto before_new = this->getNode(index - 1);
-    newNode->next = before_new->next;
-    before_new->next = newNode;
+    new_node->next = before_new->next;
+    before_new->next = new_node;
     this->length++;
 };
 
-template <typename T>
-void CircularLinkedList<T>::insertAtBeginning(T data)
-{
+template<typename T>
+void CircularLinkedList<T>::insertAtBeginning(T data) {
     this->insert(0, data);
 }
 
-template <typename T>
-void CircularLinkedList<T>::insertAtEnd(T data)
-{
+template<typename T>
+void CircularLinkedList<T>::insertAtEnd(T data) {
     this->insert(this->length, data);
 }
 
-template <typename T>
-T CircularLinkedList<T>::getData(int index)
-{
+template<typename T>
+T CircularLinkedList<T>::getData(int index) {
     auto current = this->getNode(index);
     return current->data;
 }
 
-template <typename T>
-void CircularLinkedList<T>::remove(int index)
-{
+template<typename T>
+void CircularLinkedList<T>::remove(int index) {
     // Remove at the beginning
-    if (index == 0)
-    {
-        if (this->head == nullptr)
+    if (index == 0) {
+        if (this->head == nullptr) {
             throw out_of_range("Index out of range");
+        }
 
-        if (this->length == 1)
-        {
+        if (this->length == 1) {
             delete this->head;
             this->head = nullptr;
-        }
-        else
-        {
+        } else {
             auto last = this->getNode(this->length - 1);
             auto to_be_removed = this->head;
             this->head = this->head->next;
@@ -162,22 +147,19 @@ void CircularLinkedList<T>::remove(int index)
     this->length--;
 }
 
-template <typename T>
-void CircularLinkedList<T>::removeFirst()
-{
+template<typename T>
+void CircularLinkedList<T>::removeFirst() {
     this->remove(0);
 }
 
-template <typename T>
-void CircularLinkedList<T>::removeLast()
-{
+template<typename T>
+void CircularLinkedList<T>::removeLast() {
     this->remove(this->length - 1);
 }
 
-template <typename T>
-int CircularLinkedList<T>::getLength()
-{
+template<typename T>
+int CircularLinkedList<T>::getLength() {
     return this->length;
 }
 
-#endif // CIRCULAR_LINKED_LIST_HPP_
+#endif  // __CIRCULAR_LINKED_LIST_HPP__

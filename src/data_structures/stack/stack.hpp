@@ -1,70 +1,65 @@
-#ifndef STACK_HPP_
-#define STACK_HPP_
+#ifndef __STACK_HPP__
+#define __STACK_HPP__
+
+#include <stdexcept>
 
 using namespace std;
 
-template <typename T>
-struct Node
-{
-    T data;
-    Node *next;
+template<typename T>
+struct Node {
+        T data;
+        Node *next;
 };
 
-template <typename T>
-class Stack
-{
-private:
-    Node<T> *head;
-    int length;
+template<typename T>
+class Stack {
+    private:
+        Node<T> *head;
+        int length;
 
-    bool isEmpty();
-    void clear();
+        bool isEmpty();
+        void clear();
 
-public:
-    Stack();
-    ~Stack();
+    public:
+        Stack();
+        ~Stack();
 
-    int getLength();
-    void push(T data);
-    T pop();
-    T peek();
+        int getLength();
+        void push(T data);
+        T pop();
+        T peek();
 };
 
-template <typename T>
-bool Stack<T>::isEmpty()
-{
-    return this->front == nullptr;
+template<typename T>
+bool Stack<T>::isEmpty() {
+    return this->head == nullptr;
 }
 
-template <typename T>
-void Stack<T>::clear()
-{
-    while (!this->isEmpty())
+template<typename T>
+void Stack<T>::clear() {
+    while (!this->isEmpty()) {
         this->pop();
+    }
 }
 
-template <typename T>
-Stack<T>::Stack()
-{
+template<typename T>
+Stack<T>::Stack() {
     this->head = nullptr;
     this->length = 0;
 }
 
-template <typename T>
-Stack<T>::~Stack()
-{
+template<typename T>
+Stack<T>::~Stack() {
     this->clear();
 }
 
-template <typename T>
-int Stack<T>::getLength()
-{
+template<typename T>
+int Stack<T>::getLength() {
     return this->length;
 }
 
-template <typename T>
-void Stack<T>::push(T data)
-{
+template<typename T>
+void Stack<T>::push(T data) {
     Node<T> *new_node = new Node<T>;
     new_node->data = data;
     new_node->next = this->head;
@@ -73,11 +68,11 @@ void Stack<T>::push(T data)
     this->length++;
 }
 
-template <typename T>
-T Stack<T>::pop()
-{
-    if (this->isEmpty())
+template<typename T>
+T Stack<T>::pop() {
+    if (this->isEmpty()) {
         throw "Stack is empty";
+    }
 
     Node<T> *to_be_removed = this->head;
     T data = to_be_removed->data;
@@ -89,13 +84,13 @@ T Stack<T>::pop()
     return data;
 }
 
-template <typename T>
-T Stack<T>::peek()
-{
-    if (this->isEmpty())
+template<typename T>
+T Stack<T>::peek() {
+    if (this->isEmpty()) {
         throw "Stack is empty";
+    }
 
     return this->head->data;
 }
 
-#endif // STACK_HPP_
+#endif  // __STACK_HPP__

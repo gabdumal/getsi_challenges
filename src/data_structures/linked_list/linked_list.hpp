@@ -1,124 +1,114 @@
-#ifndef LINKED_LIST_HPP_
-#define LINKED_LIST_HPP_
+#ifndef __LINKED_LIST_HPP__
+#define __LINKED_LIST_HPP__
 
 #include <stdexcept>
 
 using namespace std;
 
-template <typename T>
-class LinkedList
-{
-public:
-    template <typename U>
-    struct Node
-    {
-        U data;
-        Node *next;
+template<typename T>
+class LinkedList {
+    public:
+        template<typename U>
+        struct Node {
+                U data;
+                Node *next;
 
-        Node(U data) : data(data), next(nullptr) {}
-    };
+                Node(U data): data(data), next(nullptr) {}
+        };
 
-private:
-    Node<T> *head;
-    int length;
+    private:
+        Node<T> *head;
+        int length;
 
-public:
-    LinkedList();
-    ~LinkedList();
+    public:
+        LinkedList();
+        ~LinkedList();
 
-    int getLength();
-    Node<T> *getNode(int index);
-    T getData(int index);
+        int getLength();
+        Node<T> *getNode(int index);
+        T getData(int index);
 
-    void insert(int index, T data);
-    void insertAtBeginning(T data);
-    void insertAtEnd(T data);
+        void insert(int index, T data);
+        void insertAtBeginning(T data);
+        void insertAtEnd(T data);
 
-    void remove(int index);
-    void removeFirst();
-    void removeLast();
+        void remove(int index);
+        void removeFirst();
+        void removeLast();
 };
 
-template <typename T>
-LinkedList<T>::LinkedList()
-{
+template<typename T>
+LinkedList<T>::LinkedList() {
     this->head = nullptr;
     this->length = 0;
 }
 
-template <typename T>
-LinkedList<T>::~LinkedList()
-{
+template<typename T>
+LinkedList<T>::~LinkedList() {
     auto current = this->head;
-    while (current != nullptr)
-    {
+    while (current != nullptr) {
         auto next = current->next;
         delete current;
         current = next;
     }
 }
 
-template <typename T>
-typename LinkedList<T>::template Node<T> *LinkedList<T>::getNode(int index)
-{
+template<typename T>
+typename LinkedList<T>::template Node<T> *LinkedList<T>::getNode(int index) {
     auto current = this->head;
-    for (int i = 0; i < index && current != nullptr; ++i)
+    for (int i = 0; i < index && current != nullptr; ++i) {
         current = current->next;
+    }
 
-    if (current == nullptr)
+    if (current == nullptr) {
         throw out_of_range("Index out of range");
+    }
 
     return current;
 }
 
-template <typename T>
-void LinkedList<T>::insert(int index, T data)
-{
-    auto newNode = new Node<T>(data);
+template<typename T>
+void LinkedList<T>::insert(int index, T data) {
+    auto new_node = new Node<T>(data);
 
     // Insert at the beginning
-    if (index == 0)
-    {
-        newNode->next = this->head;
-        this->head = newNode;
+    if (index == 0) {
+        new_node->next = this->head;
+        this->head = new_node;
         this->length++;
         return;
     }
 
     // Insert at any other position
     auto before_new = this->getNode(index - 1);
-    newNode->next = before_new->next;
-    before_new->next = newNode;
+    new_node->next = before_new->next;
+    before_new->next = new_node;
     this->length++;
 };
 
-template <typename T>
-void LinkedList<T>::insertAtBeginning(T data)
-{
+template<typename T>
+void LinkedList<T>::insertAtBeginning(T data) {
     this->insert(0, data);
 }
 
-template <typename T>
-void LinkedList<T>::insertAtEnd(T data)
-{
+template<typename T>
+void LinkedList<T>::insertAtEnd(T data) {
     this->insert(this->length, data);
 }
 
-template <typename T>
-T LinkedList<T>::getData(int index)
-{
+template<typename T>
+T LinkedList<T>::getData(int index) {
     auto current = this->getNode(index);
     return current->data;
 }
 
-template <typename T>
-void LinkedList<T>::remove(int index)
-{
+template<typename T>
+void LinkedList<T>::remove(int index) {
     // Remove at the beginning
-    if (index == 0)
-    {
-        if (this->head == nullptr)
+    if (index == 0) {
+        if (this->head == nullptr) {
             throw out_of_range("Index out of range");
+        }
 
         this->head = this->head->next;
         this->length--;
@@ -131,22 +121,19 @@ void LinkedList<T>::remove(int index)
     this->length--;
 }
 
-template <typename T>
-void LinkedList<T>::removeFirst()
-{
+template<typename T>
+void LinkedList<T>::removeFirst() {
     this->remove(0);
 }
 
-template <typename T>
-void LinkedList<T>::removeLast()
-{
+template<typename T>
+void LinkedList<T>::removeLast() {
     this->remove(this->length - 1);
 }
 
-template <typename T>
-int LinkedList<T>::getLength()
-{
+template<typename T>
+int LinkedList<T>::getLength() {
     return this->length;
 }
 
-#endif // LINKED_LIST_HPP_
+#endif  // __LINKED_LIST_HPP__

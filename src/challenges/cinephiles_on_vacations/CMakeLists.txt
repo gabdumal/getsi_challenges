@@ -1,7 +1,7 @@
-# Project
+## Library
 add_library(cinephiles_on_vacations)
 
-# Sources
+## Sources
 target_sources(cinephiles_on_vacations
     PUBLIC
         algorithm.hpp
@@ -9,16 +9,15 @@ target_sources(cinephiles_on_vacations
         algorithm.cpp
 )
 
-
-# Include self
+## Define module
 target_include_directories(cinephiles_on_vacations
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
-# Linking libraries
+## Link libraries
 target_link_libraries(cinephiles_on_vacations
     PRIVATE
-        tester
         data_structures
+        tester
 )

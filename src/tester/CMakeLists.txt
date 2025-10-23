@@ -1,7 +1,7 @@
-# Project
+## Library
 add_library(tester)
 
-# Sources
+## Sources
 target_sources(tester
     PUBLIC
         tester.hpp
@@ -9,14 +9,8 @@ target_sources(tester
         tester.cpp
 )
 
-
-# Include self
+## Define module
 target_include_directories(tester
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
-)
-
-# Linking libraries
-target_link_libraries(tester
-    PRIVATE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )

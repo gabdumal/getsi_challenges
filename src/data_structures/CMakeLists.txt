@@ -1,20 +1,21 @@
-# Project
-add_library(data_structures)
+## Library
+add_library(data_structures INTERFACE)
 
-# Include self
-target_include_directories(tester
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
-)
-
-# Linking libraries
-target_link_libraries(tester
-    PRIVATE
-)
-
-# Directories
-add_subdirectory(linked_list)
+## Directories
 add_subdirectory(circular_linked_list)
+add_subdirectory(doubly_circular_linked_list)
+add_subdirectory(linked_list)
+add_subdirectory(queue)
+add_subdirectory(stack)
+add_subdirectory(unordered_map)
 
-# Properties
-set_target_properties(data_structures PROPERTIES LINKER_LANGUAGE CXX)
+## Linking libraries
+target_link_libraries(data_structures
+    INTERFACE
+        circular_linked_list
+        doubly_circular_linked_list
+        linked_list
+        queue
+        stack
+        unordered_map
+)

@@ -1,7 +1,7 @@
-# Project
+## Library
 add_library(preferential_queues)
 
-# Sources
+## Sources
 target_sources(preferential_queues
     PUBLIC
         algorithm.hpp
@@ -9,16 +9,15 @@ target_sources(preferential_queues
         algorithm.cpp
 )
 
-
-# Include self
+## Define module
 target_include_directories(preferential_queues
     PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
 
-# Linking libraries
+## Link libraries
 target_link_libraries(preferential_queues
     PRIVATE
-        tester
         data_structures
+        tester
 )

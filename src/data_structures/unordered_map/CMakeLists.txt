@@ -1,11 +1,14 @@
-# Sources
-target_sources(data_structures
-    PUBLIC
+## Library
+add_library(unordered_map INTERFACE)
+
+## Headers
+target_sources(unordered_map
+    INTERFACE
         unordered_map.hpp
 )
 
-# Include self
-target_include_directories(data_structures
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+## Define module
+target_include_directories(unordered_map
+    INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )

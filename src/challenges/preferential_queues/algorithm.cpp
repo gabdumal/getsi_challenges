@@ -1,4 +1,5 @@
 #include "algorithm.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -23,8 +24,7 @@ constexpr int shift_duration = 180;
 constexpr int urgent_queue_age = 80;
 constexpr int preferential_queue_age = 60;
 
-string PreferentialQueues::main(string input)
-{
+string PreferentialQueues::main(string input) {
     vector<Client> clients = parseInputToClients(input);
     string output = "";
 
@@ -35,20 +35,20 @@ string PreferentialQueues::main(string input)
 
     int remaining_time_for_current_client = 0;
     int minute = 0;
-    while (minute <= shift_duration && attended_clients.getLength() <= clients.size())
-    {
+    while (
+        minute <= shift_duration &&
+        attended_clients.getLength() <= clients.size()) {
         // Arriving clients go to their respective queues
-        vector<Client> clients_that_arrived_at_minute = get_clients_that_arrived_at(minute, clients);
+        vector<Client> clients_that_arrived_at_minute = getClientsThatArrivedAt(minute, clients);
 
-        for (auto client : clients_that_arrived_at_minute)
-            enqueue_client(client, regular, preferential, urgent);
+        for (auto client : clients_that_arrived_at_minute) {
+            enqueueClient(client, regular, preferential, urgent);
+        }
 
         // When there are no clients being attended, select one if there are any waiting
-        if (remaining_time_for_current_client <= 0)
-        {
-            if (are_there_any_clients_to_dequeue(regular, preferential, urgent))
-            {
-                Client current_client = dequeue_client(regular, preferential, urgent);
+        if (remaining_time_for_current_client <= 0) {
+            if (areThereAnyClientsToDequeue(regular, preferential, urgent)) {
+                Client current_client = dequeueClient(regular, preferential, urgent);
                 attended_clients.enqueue(current_client);
                 remaining_time_for_current_client = current_client.service_time;
             }
@@ -58,9 +58,8 @@ string PreferentialQueues::main(string input)
         minute++;
     }
 
-    int total_clients = attended_clients.getLength();
-    for (int i = 0; i < total_clients; i++)
-    {
+    unsigned int total_clients = attended_clients.getLength();
+    for (unsigned int i = 0; i < total_clients; i++) {
         Client client = attended_clients.dequeue();
         output += to_string(client.age) + " ";
     }
@@ -68,34 +67,35 @@ string PreferentialQueues::main(string input)
     return output;
 }
 
-vector<PreferentialQueues::Client> PreferentialQueues::get_clients_that_arrived_at(int minute, vector<Client> all_clients)
-{
+vector<PreferentialQueues::Client> PreferentialQueues::getClientsThatArrivedAt(int minute, vector<Client> all_clients) {
     vector<Client> clients;
-    for (auto client : all_clients)
-    {
-        if (client.arrival_time == minute)
+    for (auto client : all_clients) {
+        if (client.arrival_time == minute) {
             clients.push_back(client);
+        }
     }
     return clients;
 }
 
-void PreferentialQueues::enqueue_client(Client client, Queue<Client> &regular, Queue<Client> &preferential, Queue<Client> &urgent)
-{
-    if (client.age < preferential_queue_age)
+void PreferentialQueues::enqueueClient(Client client, Queue<Client> &regular, Queue<Client> &preferential, Queue<Client> &urgent) {
+    if (client.age < preferential_queue_age) {
         regular.enqueue(client);
-    else if (client.age < urgent_queue_age)
+    } else if (client.age < urgent_queue_age) {
         preferential.enqueue(client);
-    else
+    } else {
         urgent.enqueue(client);
+    }
 }
 
-PreferentialQueues::Client PreferentialQueues::dequeue_client(Queue<Client> &regular, Queue<Client> &preferential, Queue<Client> &urgent)
-{
-    if (!urgent.isEmpty())
+PreferentialQueues::Client PreferentialQueues::dequeueClient(Queue<Client> &regular, Queue<Client> &preferential, Queue<Client> &urgent) {
+    if (!urgent.isEmpty()) {
         return urgent.dequeue();
-    if (!preferential.isEmpty())
+    }
+    if (!preferential.isEmpty()) {
         return preferential.dequeue();
-    if (!regular.isEmpty())
+    }
+    if (!regular.isEmpty()) {
         return regular.dequeue();
+    }
     throw "No clients to dequeue";
 }

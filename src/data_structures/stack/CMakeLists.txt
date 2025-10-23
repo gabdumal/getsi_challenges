@@ -1,11 +1,14 @@
-# Sources
-target_sources(data_structures
-    PUBLIC
+## Library
+add_library(stack INTERFACE)
+
+## Headers
+target_sources(stack
+    INTERFACE
         stack.hpp
 )
 
-# Include self
-target_include_directories(data_structures
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+## Define module
+target_include_directories(stack
+    INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
